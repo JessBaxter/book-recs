@@ -42,4 +42,4 @@ MDN. (2023). [MVC](https://developer.mozilla.org/en-US/docs/Glossary/MVC). Avail
 
 Visual Paradigm. (2023). [What is Model-View and Control?](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-model-view-control-mvc/). Available at: [https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-model-view-control-mvc/](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-model-view-control-mvc/)
 
-Wikipedia. (2023). ["Model-view-controller"](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller). Available at: (https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)[https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller]
+Wikipedia. (2023). ["Model-view-controller"](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller). Available at: [https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
