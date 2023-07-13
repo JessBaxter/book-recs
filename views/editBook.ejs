@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head.ejs") %>
+    <title>Book Recs - Edit Book</title>
+  </head>
+  <body>
+    <h1>Edit Book</h1>
+    <form action="/books/<%= book._id %>/edit" method="POST">
+      <input type="hidden" name="_method" value="PUT" />
+      <label for="title">Title:</label>
+      <br />
+      <input type="text" id="title" name="title" value="<%= book.title %>" />
+      <br />
+      <label for="author">Author:</label>
+      <br />
+      <input type="text" id="author" name="author" value="<%= book.author %>" />
+      <br />
+      <label for="review">Review:</label>
+      <br />
+      <input type="text" id="review" name="review" value="<%= book.review %>" />
+      <br />
+      <label for="recommendation">Recommendation:</label>
+      <br />
+      <input
+        type="text"
+        id="recommendation"
+        name="recommendation"
+        value="<%= book.recommendation %>" />
+      <br />
+      <input type="submit" value="Save Changes" />
+    </form>
+    <form id="deleteForm" action="/books/<%= book._id %>/delete" method="POST">
+      <input type="hidden" name="_method" value="DELETE" />
+      <button id="deleteButton" type="submit">Delete Book</button>
+    </form>
+    <a href="/books">Back to All Books</a>
+  </body>
+</html>

@@ -1,52 +1,71 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import { getAllBooks } from "./controllers/bookController.js";
+import { db } from "./database.js";
+import bookRouter from "./routes/bookRoutes.js";
+import mainRouter from "./routes/index.js";
 
 // Obfuscate sensitive variables
 dotenv.config();
 
-// Create Express application
-const app = express();
-const port = process.env.PORT;
+// Ensure database connection is established before we start listening for requests
+const startServer = async () => {
+  try {
+    // Connect to database
+    const database = await db();
 
-// Enable middleware to parse JSON requests
-app.use(express.json());
+    // Create Express application
+    const app = express();
 
-// Enable cross-origin resources sharing
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      const allowedOrigins = ["http://127.0.0.1"];
+    // Enable middleware to parse JSON requests
+    app.use(express.json());
 
-      // Allow requests with no origin (e.g. mobile apps, curl requests)
-      if (!origin) return callback(null, true);
+    // Enable cross-origin resources sharing
+    let allowedOrigins = [`http://127.0.0.1:${process.env.PORT}`]; // default value for dev
+    // Change allowedOrigins if in production
+    // if (process.env.NODE_ENV === "production") {
+    //   allowedOrigins = ["https://HOST.GOES.HERE"];
+    // }
+    app.use(
+      cors({
+        origin: function (origin, callback) {
+          // Allow requests with no origin (e.g. mobile apps, curl requests)
+          if (!origin) return callback(null, true);
 
-      if (allowedOrigins.indexOf(origin) === -1) {
-        const msg =
-          "The CORS policy for this site does not allow access from the specified origin.";
-        return callback(new Error(msg), false);
-      }
+          if (allowedOrigins.indexOf(origin) === -1) {
+            const msg =
+              "The CORS policy for this site does not allow access from the specified origin.";
+            return callback(new Error(msg), false);
+          }
 
-      return callback(null, true);
-    },
-  }),
-);
+          return callback(null, true);
+        },
+      }),
+    );
 
-// Enable the ejs view engine
-app.set("view engine", "ejs");
+    // Enable the ejs view engine
+    app.set("view engine", "ejs");
 
-// Enable support for URL-encoded request bodies (form posts)
-app.use(express.urlencoded({ extended: true }));
+    // Enable support for URL-encoded request bodies (form posts)
+    app.use(express.urlencoded({ extended: true }));
 
-// Redirect requests to root to layout/main.ejs
-app.get("/", (req, res) => {
-  res.status(301).redirect("/layout/main.ejs");
-});
+    // Database middleware: attach database to every request
+    app.use((req, res, next) => {
+      req.db = database;
+      next();
+    });
 
-// Serve static resources
-app.use(express.static("static"));
+    // Use the mainRouter for all routes
+    app.use("/", mainRouter);
 
-// Start listening for requests
-app.listen(port, () => {
-  console.log(`Express started on http://127.0.0.1:${port}`);
-});
+    const port = process.env.PORT;
+    app.listen(port, () => {
+      console.log(`Express started on http://127.0.0.1:${port}`);
+    });
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+startServer();

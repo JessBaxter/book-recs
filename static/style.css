@@ -1,0 +1,74 @@
+:root {
+  --clr-primary: hsl(188, 54%, 72%);
+  --clr-secondary: hsl(338, 77%, 38%);
+
+  --clr-neutral-900: hsl(0, 0%, 0%);
+  --clr-neutral-700: hsl(180, 20%, 6%);
+  --clr-neutral-500: hsl(186, 22%, 9%);
+  --clr-neutral-300: hsl(193, 4%, 59%);
+  --clr-neutral-200: hsl(192, 9%, 78%);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+
+  --clr-bg-dark: var(--clr-neutral-700);
+
+  --clr-valid: hsl(98, 32%, 45%);
+  --clr-invalid: hsl(359, 47%, 51%);
+  --clr-disabled: var(--clr-neutral-300);
+
+  --ff-primary: Arial, Helvetica, sans-serif;
+  --ff-body: var(--ff-primary);
+  --ff-heading: var(--ff-primary);
+
+  --fw-regular: 400;
+  --fw-semi-bold: 500;
+  --fw-bold: 700;
+
+  --fs-hero: 6rem;
+  --fs-h1: 2rem;
+  --fs-h2: 1rem;
+  --fs-h3: 0.5rem;
+  --fs-p: 14px;
+  --fs-fig: 12px;
+}
+
+body {
+  background-color: var(--clr-bg-dark);
+  color: var(--clr-neutral-100);
+  font-family: var(--ff-body);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--clr-neutral-100);
+  font-family: var(--ff-heading);
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  color: var(--clr-neutral-300);
+}
+
+p {
+  font-size: var(--fs-p);
+}
+
+svg,
+path {
+  fill: var(--clr-neutral-100);
+}
+
+.book-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head.ejs") %>
+    <title>Book Recs - All Books</title>
+  </head>
+  <body>
+    <h1>All Books</h1>
+    <% if (books.length > 0) { %>
+    <ul>
+      <% books.forEach(function(book) { %>
+      <li>
+        <h2><%= book.title %></h2>
+        <p>
+          <strong>Author:</strong>
+          <%= book.author %>
+        </p>
+        <p>
+          <strong>Review:</strong>
+          <%= book.review %>
+        </p>
+        <p>
+          <strong>Recommendation:</strong>
+          <%= book.recommendation %>
+        </p>
+        <a href="/books/<%= book._id %>">See More</a>
+      </li>
+      <% }) %>
+    </ul>
+    <a href="/">Back to home</a>
+
+    <% } else { %>
+    <p>No books found.</p>
+    <a href="/">Back to home</a>
+
+    <% } %>
+  </body>
+</html>

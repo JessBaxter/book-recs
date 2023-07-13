@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head.ejs") %>
+    <title>Book Recs - Add a Book</title>
+  </head>
+  <body>
+    <h1>Add a New Book</h1>
+    <form action="/books" method="post">
+      <label for="title">Title:</label>
+      <br />
+      <input type="text" id="title" name="title" />
+      <br />
+      <label for="author">Author:</label>
+      <br />
+      <input type="text" id="author" name="author" />
+      <br />
+      <label for="review">Review:</label>
+      <br />
+      <input type="text" id="review" name="review" />
+      <br />
+      <label for="recommendation">Recommendation:</label>
+      <br />
+      <input type="text" id="recommendation" name="recommendation" />
+      <br />
+      <input type="submit" value="Add Book" />
+    </form>
+  </body>
+</html>

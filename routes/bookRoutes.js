@@ -1,9 +1,22 @@
 import express from "express";
-import { getBook } from "../controllers/bookController.js";
-import { db } from "../database.js";
+import {
+  addBook,
+  deleteBook,
+  editBook,
+  getAllBooks,
+  getBook,
+  renderAddBookForm,
+  renderEditBookForm,
+} from "../controllers/bookController.js";
 
-const router = express.Router();
+const bookRouter = express.Router();
 
-router.get("/:id", (req, res) => getBook(req, res, db));
+bookRouter.get("/add", renderAddBookForm);
+bookRouter.post("/:id/edit", editBook);
+bookRouter.get("/:id/edit", renderEditBookForm);
+bookRouter.post("/:id/delete", deleteBook);
+bookRouter.get("/:id", getBook);
+bookRouter.post("/", addBook);
+bookRouter.get("/", getAllBooks);
 
-export default router;
+export default bookRouter;
